@@ -1,0 +1,77 @@
+% Necessary to add chapter page images.
+\RequirePackage{atbegshi}\AtBeginShipoutInit
+
+% Memoir documentation can be found in a incredibly long and dense document:
+% http://texdoc.net/texmf-dist/doc/latex/memoir/memman.pdf
+\documentclass[%
+final,%
+a4paper,%
+10pt,%
+showtrims,%
+twoside%
+]{memoir}
+
+\input{config/custom-commands}
+\input{config/packages}
+\input{config/layout}
+\input{config/style}
+
+\input{partials/title}
+
+\begin{document}
+  \backgroundfalse
+  \partbackgroundfalse
+
+  \begin{titlingpage}
+    \maketitle
+  \end{titlingpage}
+
+  \frontmatter
+
+  \include{partials/toc}
+
+  \cleartorecto
+
+  \include{partials/preface}
+
+  \cleartoverso
+
+  \mainmatter
+
+  \include{partials/introduction}
+  \include{partials/default-chapter}
+
+  \cleartoverso
+  \partbackgroundtrue
+  \cleartorecto
+  \partbackgroundfalse
+
+  \part{Studies}
+
+  \include{partials/default-chapter-front}
+  \include{partials/default-chapter}
+
+  \include{partials/default-chapter-front}
+  \include{partials/default-chapter}
+
+  \include{partials/default-chapter-front}
+  \include{partials/default-chapter}
+
+  \backmatter
+
+  \cleartoverso
+  \partbackgroundtrue
+  \cleartorecto
+  \partbackgroundfalse
+
+  \part{Appendix}
+
+  \include{partials/acronyms}
+  \cleartorecto
+
+  \printbibliography
+  \cleartorecto
+
+  \include{partials/abstracts}
+  \cleartoverso
+\end{document}

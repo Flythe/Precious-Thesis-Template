@@ -1,0 +1,81 @@
+% Metadata.
+\title{Title}
+\author{Mr. X}
+\date{}
+
+% University/institution name.
+\newcommand{\institute}{Universiteit van Amsterdam\xspace}
+% Department name.
+\newcommand{\department}{Faculteit der Geneeskunde\xspace}
+
+% Hyphenations
+% For special characters:
+\lccode`\(`\(
+\lccode`\)`\)
+\lccode`\[`\[
+\lccode`\]`\]
+% Definitions:
+\hyphenation{te-st}
+
+% Abbrivations.
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ea}{et al.\xspace}
+
+\newif\ifdraft
+\drafttrue
+
+\ifdraft
+  % General editing commands.
+  % Usage: \todo{text}.
+  \newcounter{todocounter}
+  \newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO\stepcounter{todocounter}~\thetodocounter:} \textit{#1}}}
+
+  % Note commands.
+  % For color list see: http://en.wikibooks.org/wiki/LaTeX/Colors#Predefined_colors.
+  \newcommand{\gnote}[1]{\textcolor{NavyBlue}{\textit{#1}}}
+\else
+  \newcommand{\todo}[1]{}
+
+  \newcommand{\gnote}[1]{}
+\fi
+
+% Define a macro \Autoref to allow multiple references to be passed to \autoref.
+\makeatletter
+\newcommand\Autoref[1]{\@first@ref#1,@}
+\def\@throw@dot#1.#2@{#1}% discard everything after the dot
+\def\@set@refname#1{%    % set \@refname to autoefname+s using \getrefbykeydefault
+  \edef\@tmp{\getrefbykeydefault{#1}{anchor}{}}%
+  \def\@refname{\@nameuse{\expandafter\@throw@dot\@tmp.@autorefname}s}%
+}
+\def\@first@ref#1,#2{%
+  \ifx#2@\autoref{#1}\let\@nextref\@gobble% only one ref, revert to normal \autoref
+  \else%
+  \@set@refname{#1}%  set \@refname to autoref name
+  \@refname~\ref{#1}% add autoefname and first reference
+  \let\@nextref\@next@ref% push processing to \@next@ref
+  \fi%
+  \@nextref#2%
+}
+\def\@next@ref#1,#2{%
+  \ifx#2@ and~\ref{#1}\let\@nextref\@gobble% at end: print and+\ref and stop
+  \else, \ref{#1}% print  ,+\ref and continue
+  \fi%
+  \@nextref#2%
+}
+\makeatother
+
+% For rotated text.
+% \newcommand{\lrot}[1]{\llap{\rotatebox{90}{#1}}}
+% \newcommand{\rrot}[1]{\rlap{\rotatebox{90}{#1}}}
+% \newcommand{\raiscrot}[1]{\makebox[0pt][c]{\raisebox{-1.5cm}{\rotatebox{90}{#1}}}}
+
+% For text bullets.
+% \newcommand{\bul}{\textbullet\xspace}
+
+% prevent page break
+% \newenvironment{absolutelynopagebreak}
+%   {\par\nobreak\vfil\penalty0\vfilneg
+%    \vtop\bgroup}
+%   {\par\xdef\tpd{\the\prevdepth}\egroup
+%    \prevdepth=\tpd}

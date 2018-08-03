@@ -1,0 +1,158 @@
+% -----------------------------------------------
+%                   DEBUGGING
+% -----------------------------------------------
+
+% Dummy text for testing layout.
+\usepackage{blindtext}
+
+% Show frames of floats for debugging.
+%\usepackage{showframe}
+
+% Uncomment to see better traces.
+%\usepackage{trace}
+
+% -----------------------------------------------
+
+% Standard LaTeX graphics tool when including figure files.
+\usepackage{graphicx}
+  \graphicspath{{./figures/}}
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png,.jpg,.eps}
+
+% Improves the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls.
+\usepackage{array}
+
+% subfig.sty requires and automatically loads caption.sty which will override
+% template specific handling of captions and this will result in non-template
+% style figure/table captions. To prevent this problem, be sure and preload
+% caption.sty with its "caption=false" package option. This is will preserve
+% your template.cls handing of captions.
+\usepackage[caption=false,font=footnotesize]{subfig}
+
+% For side captions (use \begin{SCfigure}).
+% \usepackage{sidecap}
+
+% For \begin{verbbox} and \theverbbox.
+% \usepackage{verbatimbox}
+
+% Specify custom fonts.
+\usepackage{fontspec}
+\setmainfont[Renderer=ICU]{Gentium Book Basic}
+\setsansfont[Scale=MatchLowercase]{Open Sans}
+\setmonofont[Scale=MatchLowercase]{Inconsolata}
+
+% Adds math symbols: http://milde.users.sourceforge.net/LUCR/Math/mathpackages/amssymb-symbols.pdf.
+% \usepackage{amssymb}
+
+% English / Dutch language/hyphenation
+\usepackage[main=english,dutch]{babel}
+% Make sure quoted text is typeset correctly, recommended to use with babel.
+\usepackage{csquotes}
+
+% Slightly tweak font spacing for aesthetics.
+\usepackage{microtype}
+
+% Used in \newcommands, takes care of automatically insertion of space.
+\usepackage{xspace}
+
+% For \begin{inparaenum}[(i)] \item \end{inparaenum}.
+% \usepackage{paralist}
+
+% For [noitemsep,topsep=0pt] to adjust spacing.
+\usepackage{enumitem}
+
+% Used in \newcommands to colour notes.
+\usepackage{color}
+% Required for the linkbordercolor option of the hyperref package.
+\usepackage[usenames,dvipsnames,table]{xcolor}
+
+% Used to define shapes for the abstract boxes.
+\usepackage{tikz}
+
+% For correct display of urls.
+\usepackage{url}
+
+% Required for links and changing link options.
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdfauthor={\theauthor},
+  pdftitle={\thetitle | \theauthor},
+  pdfsubject={\theauthor's PhD Thesis},
+  pdfkeywords={},
+  pdfdisplaydoctitle=true,
+  % bookmarks=true,
+  bookmarksnumbered=true,
+  breaklinks=true
+}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Section}
+\def\figureautorefname{Figure}
+\def\subfigureautorefname{Figure}
+\def\chapterautorefname{Chapter}
+
+% Use \cref{lable} and \Cref{label}.
+%\usepackage[noabbrev,capitalise]{cleveref}
+%\crefname{section}{sect.}{sections}
+%\Crefname{section}{Sect.}{Sections}
+%\crefname{figure}{fig.}{figures}
+%\Crefname{figure}{Fig.}{Figures}
+
+% Include a list of acronyms.
+\usepackage[printonlyused]{acronym}
+% For multicolumn acronyms \begin{multicols}{2}.
+%\usepackage{multicol}
+
+% For vertical rotated text in table cells use \begin{sideways}rotated
+% text \end{sideways}. Also for rotated figures (use \begin{sidewaysfigure}).
+\usepackage{rotating}
+
+% For \multirow{3}{*}{Text}.
+\usepackage{multirow}
+
+% Professional tables (\toprule, \midrule, \bottomrule).
+\usepackage{booktabs}
+
+% Break tables across pages (see Portfolio).
+\usepackage{xtab}
+
+% Indent all paragraphs.
+%\usepackage{indentfirst}
+
+% Read the chapterthumb.sty
+\usepackage{chapterthumb}
+% Required for the chapterthumbs.
+\usepackage[headsepline]{scrlayer-scrpage}
+
+% Automatically sort and properly compress/range the citation numbers.
+%\usepackage{cite}
+
+% Decent management of bibtex.
+\usepackage[%
+backend=biber,%
+style=numeric-comp,%
+giveninits=true,%
+minnames=1,%
+maxnames=3%
+]{biblatex}
+
+\bibliography{ref}
+
+% For the following patch.
+\usepackage{etoolbox}
+% Reset acronyms for each chapter.
+\preto\chapter\acresetall
+
+% For \TeX  \XeTeX  \LuaTeX  \LaTeX  \XeLaTeX  \LuaLaTeX  \LaTeXe.
+\usepackage{metalogo}
+
+% For \nth{1} \nth{2} and so on.
+\usepackage[super]{nth}
+
+% Used to add chapter page and part page backgrounds.
+\usepackage{eso-pic}
+
+% Suppress some warnings.
+\usepackage{silence}
+\WarningFilter{microtype}{Unknown slot number of character}
+\WarningFilter{blindtext}{dutch not defined}
+% \WarningFilter{latexfont}{Font shape}

@@ -1,0 +1,118 @@
+%% \maketitle is essentially translated to this:
+%\renewcommand{\maketitle}{%
+% \vspace*{\droptitle}
+% \maketitlehooka
+% {\pretitle \title \posttitle}
+% \maketitlehookb
+% {\preauthor \author \postauthor}
+% \maketitlehookc
+% {\predate \date \postdate}
+% \maketitlehookd
+%}
+
+\renewcommand{\maketitlehooka}{%
+  \pagestyle{empty}
+
+  \vspace*{\droptitle}
+
+  \begin{center}
+    {\Huge \thetitle}
+    \vskip 3 em
+    {\LARGE \theauthor}
+  \end{center}
+
+  \clearpage
+
+  \par\vspace*{\fill}
+
+  \noindent \thetitle \\
+  \theauthor \\
+  PhD Thesis, \acl{UvA}, The Netherlands \\
+  ISBN: \\
+  \url{http://dare.uva.nl/dissertaties}
+
+  \vskip 1.5 em
+
+  \noindent\begin{tabular}{@{}p{2cm}p{10.35cm}}
+    Layout:       & Shayan Shahand with the help of F. Maggi, V. Gayevskiy, and the \TeX{} community. Font and layout tweaks by Allard van Altena.\\
+    Cover design: & \\
+    Typeset:      & \XeLaTeX{} with packages: \textit{acronym, array, bable, biblatex, blindtext, booktabs, chapterthumb, (x)color, csquotes, enumitem, eso-pic, etoolbox, fontenc, fontspec, graphicx, hyperref, ifxetex, inputenc, subfig, koma-script, lmodern, memoir, metalogo, microtype, multirow, nth, rotating, scrpage, silence, tikz, url, xspace, and xtab}\\
+    Text fonts:   & Gentium Book Basic, \textsf{Montserrat}, and \texttt{Roboto Mono}.\\
+    Printing:     & \\
+  \end{tabular}
+
+  \vskip 1.5 em
+
+  \noindent Financial support by.
+
+  \vskip 1.5 em
+
+  \noindent Copyright \textcopyright{} 2018
+  \cleartorecto
+}
+
+\pretitle{
+  \vspace*{\droptitle}
+  \begin{center}
+    \Huge
+}
+
+\posttitle{
+    \par
+    \vfill
+    {\Large ACADEMISCH PROEFSCHRIFT}
+  \end{center}
+  \vskip 3em
+}
+
+\renewcommand{\maketitlehookb}{%
+  \begin{center}
+    ter verkrijging van de graad van doctor\\[1em]
+    aan de \institute\\[1em]
+    op gezag van de Rector Magnificus\\[1em]
+    Mr. Z\\[1em]
+    ten overstaan van een door het College voor Promoties ingestelde commissie,\\[1em]
+    in het openbaar te verdedigen in de Agnietenkapel\\[1em]
+    op donderdag XX maand XXXX, te XX:XX uur
+  \end{center}
+}
+
+% Redefine the pre- and post-author styling. Inserted right after
+% maketitlehookb.
+\preauthor{
+  \begin{center}
+    door
+    \bfseries \large
+}
+
+\postauthor{
+    \mdseries\\[1em] \normalsize
+    geboren te XX, XX
+  \end{center}
+}
+
+
+\renewcommand{\maketitlehookd}{%
+  \clearpage
+  \noindent \textbf{Promotiecommissie:}
+  \par \vskip 1em \noindent
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{llp{4.5cm}}
+    Promotor:      & AA & Universiteit \\
+    Co-promotor:   & AA & Universiteit \\
+    Overige leden: & AA & Universiteit \\
+  \end{tabular}
+  \par \vskip 2em \noindent \department
+  \par\vspace*{\fill}
+  \noindent The research described in this thesis was carried out in the department of XX.
+
+  \clearpage
+
+  % Below adds a page for a short message by the author (to parents, partners, children, etc.).
+  % \par \vspace*{14em}
+  % \begin{flushright}
+  %   \textit{test}\\[1em]
+  %   \textit{test}
+  % \end{flushright}
+  % \cleartorecto
+}

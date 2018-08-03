@@ -1,0 +1,82 @@
+% The memoir class used in this template contains the ability to set the stock
+% paper size and the trimmed size independently. It also has the ability to show
+% trim lines showing where stock paper should be trimmed to get the final book
+% size. This can all be a bit confusing so please see the memoir class
+% documentation for more information.
+
+% By default, the paper size is a4paper which is 29.7cm × 21cm. To change this,
+% simply change "a4paper" in the \documentclass[a4paper,...]{memoir} command in
+% thesis.tex to another size such as "letterpaper". By default, the trimmed size
+% is 24cm x 17cm and trim lines are shown. To remove trim lines, simply remove
+% "showtrims" from the \documentclass[showtrims,...]{memoir} command in
+% thesis.tex. The size of the trimmed content is set with the
+% \settrimmedsize{}{} command below. If you wish to remove trims and set the
+% content to fit the paper size (i.e. no trimming at all), all you have to do is
+% remove "showtrims" as above and comment out the \settrimmedsize{}{} command
+% below.
+
+% Uncomment to manually set the stock size and override the setting in \documentclass.
+%\setstocksize{24cm}{17cm}
+% Change the trimmed area size or comment out this line entirely to fit the
+% content to the paper size without trimming.
+\settrimmedsize{24cm}{17cm}{*}
+% The first bracket specifies the spine margin, the second the edge margin and
+% the third the ratio of the spine to the edge. Only one or two values are
+% required and the remaining one(s) can be a star (*) to specify it is not
+% needed.
+\setlrmarginsandblock{22mm}{*}{0.9}
+% The first bracket specifies the upper margin, the second the lower margin and
+% the third the ratio of the upper to the lower. Only one or two values are
+% required and the remaining one(s) can be a star (*) to specify it is not
+% needed.
+\setulmarginsandblock{26mm}{20mm}{*}
+
+
+% The size of marginal notes, the three values in curly brackets are
+% \marginparsep, \marginparwidth and \marginparpush.
+\setmarginnotes{17pt}{51pt}{\onelineskip}
+% Sets the space available for the header and footer
+\setheadfoot{\onelineskip}{2\onelineskip}
+% Sets the spacing above and below the header
+\setheaderspaces{*}{2\onelineskip}{*}
+
+
+% Sets the spacing above the trimmed area, i.e. moved the trimmed area down the
+% page if positive.
+\setlength{\trimtop}{0pt}
+
+
+% Comment the two lines below to reverse the position of the trimmed content on
+% the stock paper, i.e. odd pages will have content on the right side instead of
+% the left and even pages will have content on the left side instead of the
+% right.
+\setlength{\trimedge}{\stockwidth}
+\addtolength{\trimedge}{-\paperwidth}
+
+% To bring content to center.
+\addtolength{\trimtop}{2.85cm}
+% To bring content to center.
+\addtolength{\trimedge}{-2cm}
+
+% Display other style of trim marks.
+\quarkmarks
+
+% Put jobname in left top trim mark.
+\renewcommand*{\tmarktl}{\registrationColour{%
+  \begin{picture}(0,0)
+    \setlength{\unitlength}{1bp}\thicklines
+    \put(-36,0){\line(1,0){24}}
+    \put(0,12){\line(0,1){24}}
+    \put(3,27){\normalfont\ttfamily\fontsize{8bp}{10bp}\selectfont\jobname\ \
+      \today\ \ \printtime\ \ Sheet \thesheetsequence}
+  \end{picture}}}
+
+
+% Makes sure your specifications are correct and implements them in the document.
+\checkandfixthelayout
+
+
+% Text breakpoint setup.
+\raggedbottom
+\hyphenpenalty=5000
+\tolerance=1000
